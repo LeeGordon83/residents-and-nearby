@@ -5,7 +5,7 @@ const Users = require('../../server/lib/users')
 const { data, schema } = require('../support')
 
 describe('Users', async () => {
-  describe('get', () => {
+  describe('.get', () => {
     // Arrange
     const users = new Users()
 
