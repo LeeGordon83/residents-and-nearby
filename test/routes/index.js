@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 
-const index = require('../server/routes')
+const index = require('../../server/routes')
 
 describe('default route', () => {
   it('expects the view \'index.ejs\' to be returned as a property of the response object', () => {
@@ -19,6 +19,6 @@ describe('default route', () => {
     index(_, res)
 
     // Assert
-    expect(res.view).equal('index.ejs')
+    expect(res.view).to.equal('index.ejs')
   })
 })
