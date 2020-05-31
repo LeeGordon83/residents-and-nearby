@@ -6,7 +6,7 @@ module.exports.data = [
     email: 'abc@xyz.co.uk',
     ip_address: '192.168.1.1',
     latitude: 47.608013,
-    longitude: -122.335167
+    longitude: -121.262135
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ module.exports.data = [
     email: 'abc@xyz.co.uk',
     ip_address: '192.168.1.1',
     latitude: 47.608013,
-    longitude: -122.335167
+    longitude: -121.262134
   }
 ]
 
