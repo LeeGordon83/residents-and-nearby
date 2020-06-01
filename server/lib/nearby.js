@@ -1,6 +1,6 @@
-const haversine = require('haversine')
-
 const Users = require('../lib/users')
+
+const { distance } = require('../utils/distance')
 
 class Nearby {
   constructor (data = undefined) {
@@ -11,22 +11,10 @@ class Nearby {
   async get (lat, long, miles = 50) {
     const users = this.data || await this.users.get()
 
-    const nearby = users.filter(e => {
-      const start = {
-        latitude: parseFloat(lat),
-        longitude: parseFloat(long)
-      }
+    const nearby = users.filter(user => {
+      user.distance = distance(lat, long, user).toFixed(2)
 
-      const end = {
-        latitude: parseFloat(e.latitude),
-        longitude: parseFloat(e.longitude)
-      }
-
-      const distance = haversine(start, end, { unit: 'mile' })
-
-      e.distance = distance
-
-      return distance < miles
+      return user.distance < miles
     })
 
     return nearby
