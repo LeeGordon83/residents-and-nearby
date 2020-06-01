@@ -27,8 +27,8 @@ describe('Nearby', () => {
         const result = await nearby.get(47.608013, -122.335167)
 
         // Assert
-        expect(result.length).is.eql(1)
-        expect(result[0].first_name).is.eql('Rick')
+        expect(result.length).is.equal(1)
+        expect(result[0].first_name).is.equal('Rick')
       })
     })
   })
