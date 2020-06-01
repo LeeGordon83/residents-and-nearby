@@ -31,9 +31,9 @@ describe('Users', () => {
         const result = await users.get()
 
         // Assert
-        expect(result.length).is.eql(2)
-        expect(result[0].first_name).is.eql('Rick')
-        expect(result[1].first_name).is.eql('Morty')
+        expect(result.length).is.equal(2)
+        expect(result[0].first_name).is.equal('Rick')
+        expect(result[1].first_name).is.equal('Morty')
 
         mock.reset()
       })
