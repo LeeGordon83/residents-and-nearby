@@ -20,6 +20,19 @@ describe('Users', () => {
           expect(Object.keys(result[0])).to.eql(Object.keys(schema))
         }
       })
+
+      it('expects an error to be thrown if the API url is incorrect', async () => {
+        // Arrange
+        const users = new Users('')
+
+        try {
+          // Act
+          await users.get()
+        } catch (error) {
+          // Assert
+          expect(error.message).to.equal('only absolute urls are supported')
+        }
+      })
     })
 
     context('Unit Tests', () => {
@@ -39,14 +52,14 @@ describe('Users', () => {
       })
 
       it('expects a bad response to be handled', async () => {
-      // Arrange
+        // Arrange
         mock.get(`${url}/users`, 404)
 
         try {
-        // Act
+          // Act
           await users.get()
         } catch (error) {
-        // Assert
+          // Assert
           expect(error.message).to.equal('Bad response from server')
         }
 

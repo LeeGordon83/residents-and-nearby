@@ -21,11 +21,24 @@ describe('Residents', () => {
           expect(Object.keys(result[0])).to.eql(Object.keys(schema))
         }
       })
+
+      it('expects an error to be thrown if the API url is incorrect', async () => {
+        // Arrange
+        const residents = new Residents('')
+
+        try {
+          // Act
+          await residents.get()
+        } catch (error) {
+          // Assert
+          expect(error.message).to.equal('only absolute urls are supported')
+        }
+      })
     })
 
     context('Unit Tests', () => {
       it('expects an array of objects to be returned', async () => {
-      // Arrange
+        // Arrange
         mock.get(`${url}/city/${city}/users`, data)
 
         // Act
@@ -40,14 +53,14 @@ describe('Residents', () => {
       })
 
       it('expects a bad response to be handled', async () => {
-      // Arrange
+        // Arrange
         mock.get(`${url}/city/${city}/users`, 404)
 
         try {
-        // Act
+          // Act
           await residents.get(city)
         } catch (error) {
-        // Assert
+          // Assert
           expect(error.message).to.equal('Bad response from server')
         }
 

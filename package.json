@@ -31,5 +31,11 @@
       "fetch",
       "it"
     ]
+  },
+  "nyc": {
+    "exclude": [
+      "server/utils",
+      "test/*"
+    ]
   }
 }
