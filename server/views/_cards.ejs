@@ -1,0 +1,26 @@
+<% if (cards.error) { %>
+  <div class="card"><%= cards.error %></div>
+<% } else { %>
+  <% cards.data.forEach(card => { %>
+    <div class="card">
+      <h3 class="name"><%= card.first_name + ' ' + card.last_name %></h3>
+
+      <p class="email">
+        <span>Email: </span>
+        <a href="mailto:<%= card.email%>"><%= card.email %></a>
+      </p>
+
+    <% if (card.distance) { %>
+      <p class="nearby">
+        <span>Distance: </span>
+        <%= card.distance %> miles
+      </p>
+    <% } else { %>
+      <p class="resident">
+        <span>Status: </span>
+        Resident
+      </p>
+    <% } %>
+    </div>
+  <% }) %>
+<% } %>

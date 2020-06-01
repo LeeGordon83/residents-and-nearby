@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living in or Currently near London</title>
+  <title>Residents of London or Currently Nearby</title>
 </head>
 <body>
-  <h1>Living in or Currently near London</h1>
+  <header>
+    <h1>Residents of London or Currently Nearby</h1>
+  </header>
+
+  <h2>This is an application to display users who are living in London, and users who are currently within 50 miles of London.</h2>
+
+  <div id="residents">
+    <%- include('_cards', { cards: residents }) %>
+  </div>
+
+  <div id="nearby">
+    <%- include('_cards', { cards: nearby }) %>
+  </div>
+
 </body>
 </html>
