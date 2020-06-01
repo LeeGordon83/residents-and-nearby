@@ -4,7 +4,7 @@ const index = require('../../server/routes')
 
 describe('The default route', () => {
   context('Unit Test', () => {
-    it('expects the view \'index.ejs\' to be returned as a property of the response object', () => {
+    it('expects the view \'index.ejs\', and an array of objects, to be returned as properties of the response object', () => {
     // Arrange
       const _ = {}
       const res = {
@@ -21,6 +21,7 @@ describe('The default route', () => {
 
       // Assert
       expect(res.view).to.equal('index.ejs')
+      expect(res.locals).to.not.equal(undefined)
     })
   })
 })
