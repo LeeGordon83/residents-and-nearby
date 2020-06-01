@@ -1,9 +1,9 @@
 const expect = require('chai').expect
 const mock = require('fetch-mock')
 
-const Residents = require('../../server/lib/residents')
-const { data, schema } = require('../support')
-const { city, url } = require('../../server/config')
+const Residents = require('../../../server/lib/residents')
+const { data, schema } = require('../../support')
+const { city, url } = require('../../../server/config')
 
 describe('Residents', () => {
   // Arrange

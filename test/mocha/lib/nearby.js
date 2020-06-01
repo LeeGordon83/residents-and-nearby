@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 
-const Nearby = require('../../server/lib/nearby')
-const { data } = require('../support')
+const Nearby = require('../../../server/lib/nearby')
+const { data } = require('../../support')
 
 describe('Nearby', () => {
   describe('.get (Integration)', () => {

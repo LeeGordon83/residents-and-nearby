@@ -2,12 +2,12 @@ process.env.NODE_ENV = 'test'
 
 const expect = require('chai').expect
 
-const index = require('../../server/routes')
+const index = require('../../../server/routes')
 
-const Nearby = require('../../server/lib/nearby')
-const Residents = require('../../server/lib/residents')
+const Nearby = require('../../../server/lib/nearby')
+const Residents = require('../../../server/lib/residents')
 
-const { data } = require('../support')
+const { data } = require('../../support')
 
 describe('The Default Route (Unit)', async () => {
   // Arrange
