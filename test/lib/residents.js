@@ -1,17 +1,29 @@
 const expect = require('chai').expect
 const mock = require('fetch-mock')
 
-const Residents = require('../../../server/lib/residents')
-const { data } = require('../../support')
-const { url } = require('../../../server/config')
+const Residents = require('../../server/lib/residents')
+const { data, schema } = require('../support')
+const { url } = require('../../server/config')
 
-context('Unit Tests', () => {
-  describe('Residents', () => {
-    describe('.get', () => {
+describe('Residents', () => {
+  describe('.get', () => {
     // Arrange
-      const city = 'London'
-      const residents = new Residents()
+    const city = 'London'
+    const residents = new Residents()
 
+    context('Integration Test', () => {
+      it('expects an array of objects with the correct keys to be returned', async () => {
+        // Act
+        const result = await residents.get(city)
+
+        // Assert
+        if (result.length) {
+          expect(Object.keys(result[0])).to.eql(Object.keys(schema))
+        }
+      })
+    })
+
+    context('Unit Tests', () => {
       it('expects an array of objects to be returned', async () => {
       // Arrange
         mock.get(`${url}/city/${city}/users`, data)

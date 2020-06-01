@@ -22,7 +22,11 @@ class Nearby {
         longitude: parseFloat(e.longitude)
       }
 
-      return haversine(start, end, { unit: 'mile' }) < miles
+      const distance = haversine(start, end, { unit: 'mile' })
+
+      e.distance = distance
+
+      return distance < miles
     })
 
     return nearby

@@ -1,9 +1,9 @@
 const expect = require('chai').expect
 
-const index = require('../../../server/routes')
+const index = require('../../server/routes')
 
-context('Unit Tests', () => {
-  describe('default route', () => {
+describe('The default route', () => {
+  context('Unit Test', () => {
     it('expects the view \'index.ejs\' to be returned as a property of the response object', () => {
     // Arrange
       const _ = {}

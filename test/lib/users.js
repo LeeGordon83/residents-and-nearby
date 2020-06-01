@@ -1,18 +1,30 @@
 const expect = require('chai').expect
 const mock = require('fetch-mock')
 
-const Users = require('../../../server/lib/users')
-const { data } = require('../../support')
-const { url } = require('../../../server/config')
+const Users = require('../../server/lib/users')
+const { data, schema } = require('../support')
+const { url } = require('../../server/config')
 
-context('Unit Tests', () => {
-  describe('Users', () => {
-    describe('.get', () => {
+describe('Users', () => {
+  describe('.get', () => {
     // Arrange
-      const users = new Users()
+    const users = new Users()
 
+    context('Integration Test', () => {
+      it('expects an array of objects with the correct keys to be returned', async () => {
+        // Act
+        const result = await users.get()
+
+        // Assert
+        if (result.length) {
+          expect(Object.keys(result[0])).to.eql(Object.keys(schema))
+        }
+      })
+    })
+
+    context('Unit Tests', () => {
       it('expects an array of objects to be returned', async () => {
-      // Arrange
+        // Arrange
         mock.get(`${url}/users`, data)
 
         // Act
