@@ -1,0 +1,215 @@
+/* #region color properties */
+
+a {
+  color: #444444;
+}
+
+body {
+  background-color: #eee2dc;
+}
+
+header {
+  background-color: #3a3738;
+}
+
+header span {
+  color: #999999
+}
+
+.nearby,
+.resident,
+#header-container {
+  color: #ffffff
+}
+
+.card {
+  background-color: #ffffff;
+}
+
+.nearby {
+  background-color: #ac3b61;
+}
+
+.resident {
+  background-color: #123c69;
+}
+
+/* #endregion */
+
+/* #region other properties */
+
+body {
+  margin: 0;
+}
+
+header {
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 #00000022, 0 6px 20px 0 #00000022;
+}
+
+#header-container {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 20px 30px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+#description {
+  padding: 10px 0;
+}
+
+#variables {
+  padding: 5px 0;
+}
+
+#card-container {
+  margin: auto;
+  max-width: 1000px;
+  padding: 20px 20px 0;
+}
+
+#card-container:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#residents,
+#nearby {
+  float: left;
+  width: 50%;  
+}
+
+.card {
+  overflow: hidden;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 8px 0 #00000022, 0 6px 20px 0 #00000022;
+  border-radius: 10px;
+  max-width:  350px;
+}
+
+.name {
+  padding-top: 15px;
+}
+
+.email {
+  padding: 10px 15px 20px;
+}
+
+.nearby,
+.resident {
+  padding: 15px;
+}
+
+/* #endregion */
+
+/* #region font properties */
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1 span {
+  font-size: 36px;
+}
+
+h1,
+header span,
+.nearby,
+.resident {
+  text-shadow: 2px 2px #00000022
+}
+
+span {
+  font-weight: bold;
+}
+
+span,
+#description {
+  font-style: italic;
+}
+
+.card {
+  font-size: 16px;
+}
+
+.email,
+.name,
+.nearby,
+.resident  {
+  text-align: center;
+}
+
+#description {
+  font-size: 20px;
+}
+
+#variables {
+  font-size: 22px;;
+}
+
+/* #endregion */
+
+/* #region media queries */
+
+@media only screen and (max-width: 819px) {
+  #residents,
+  #nearby {
+    width: 100%;  
+  }
+}
+
+@media only screen and (max-width: 559px) {
+  h1 {
+    text-align: center;
+  }
+  
+  h1 span {
+    display: block;
+    line-height: 20px;
+  }
+
+  #description  {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #variables {
+    font-size: 20px;;
+  }
+
+  #variables {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 499px) {
+  h1 {
+    font-size: 30px;
+  }
+  
+  h1 span {
+    font-size: 20px;
+    line-height: 10px;
+  }
+
+  #description  {
+    font-size: 16px;
+  }
+
+  #variables {
+    font-size: 18px;;
+  }
+}
+
+/* #endregion */
