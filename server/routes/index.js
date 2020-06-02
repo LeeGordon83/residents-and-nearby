@@ -2,9 +2,9 @@ const Nearby = require('../lib/nearby')
 const Residents = require('../lib/residents')
 
 const { city, location } = require('../config')
-const { info, warning } = require('../utils/logger')
+const { info, sort, warning } = require('../utils')
 
-module.exports = async (_, res) => {
+module.exports = async (req, res) => {
   const nearby = new Nearby()
   const residents = new Residents()
 
@@ -38,5 +38,9 @@ module.exports = async (_, res) => {
     warning('Error', `the following error was thrown: ${err}`)
   }
 
-  res.render('index.ejs', { nearby: _nearby, residents: _residents })
+  const _sort = req.query.sort
+
+  sort(_nearby, _residents, _sort)
+
+  res.render('index.ejs', { nearby: _nearby, residents: _residents, sort: _sort })
 }

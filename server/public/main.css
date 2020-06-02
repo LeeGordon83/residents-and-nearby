@@ -64,6 +64,23 @@ p {
   padding: 10px 0;
 }
 
+#options-container:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#sort,
+#variables {
+  float: left;
+  width: 50%;
+}
+
+#sort {
+  line-height: 64px;
+  text-align: right;
+}
+
 #variables {
   padding: 5px 0;
 }

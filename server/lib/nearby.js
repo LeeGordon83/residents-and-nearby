@@ -1,6 +1,6 @@
 const Users = require('../lib/users')
 
-const { distance } = require('../utils/distance')
+const { distance } = require('../utils')
 
 class Nearby {
   constructor (data = undefined) {

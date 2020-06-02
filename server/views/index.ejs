@@ -12,9 +12,15 @@
       <h1>Residents<span> and </span>Nearby</h1>
       <p id="description">This is an application to display users who live in, or who are currently within distance of a city.</p>
 
-      <div id="variables">
-        <p><span>City: </span>London</p>
-        <p><span>Distance: </span>50 miles</p>
+      <div id="options-container">
+        <div id="variables">
+          <p><span>City: </span>London</p>
+          <p><span>Distance: </span>50 miles</p>
+        </div>
+  
+        <div id="sort">
+          <%- include('_sort') %>
+        </div>
       </div>
     </div>
   </header>

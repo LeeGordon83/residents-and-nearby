@@ -1,6 +1,6 @@
 const haversine = require('haversine')
 
-module.exports.distance = (lat, long, user) => {
+module.exports = (lat, long, user) => {
   const start = {
     latitude: parseFloat(lat),
     longitude: parseFloat(long)

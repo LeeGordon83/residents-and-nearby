@@ -11,7 +11,9 @@ const { data } = require('../../support')
 
 describe('The Default Route (Unit)', async () => {
   // Arrange
-  const _ = {}
+  const req = {
+    query: ''
+  }
   const res = {
     view: '',
     locals: {},
@@ -37,7 +39,7 @@ describe('The Default Route (Unit)', async () => {
     sandbox.stub(Residents.prototype, 'get').returns(data())
 
     // Act
-    await index(_, res)
+    await index(req, res)
 
     // Assert
     expect(res.view).to.equal('index.ejs')
@@ -53,7 +55,7 @@ describe('The Default Route (Unit)', async () => {
     sandbox.stub(Residents.prototype, 'get').throws(new Error('Error thrown by stub'))
 
     // Act
-    await index(_, res)
+    await index(req, res)
 
     // Assert
     expect(res.view).to.equal('index.ejs')
