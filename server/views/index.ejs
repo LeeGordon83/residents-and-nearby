@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Residents of London or Currently Nearby</title>
+  <title>Residents and Nearby</title>
+  <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
   <header>
-    <h1>Residents of London or Currently Nearby</h1>
+    <div id="header-container">
+      <h1>Residents<span> and </span>Nearby</h1>
+      <p id="description">This is an application to display users who live in, or who are currently within distance of a city.</p>
+
+      <div id="variables">
+        <p><span>City: </span>London</p>
+        <p><span>Distance: </span>50 miles</p>
+      </div>
+    </div>
   </header>
 
-  <h2>This is an application to display users who are living in London, and users who are currently within 50 miles of London.</h2>
-
-  <div id="residents">
-    <%- include('_cards', { cards: residents }) %>
-  </div>
-
-  <div id="nearby">
-    <%- include('_cards', { cards: nearby }) %>
+  <div id="card-container">
+    <div id="residents">
+      <%- include('_cards', { cards: residents }) %>
+    </div>
+  
+    <div id="nearby">
+      <%- include('_cards', { cards: nearby }) %>
+    </div>
   </div>
 
 </body>
