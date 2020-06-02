@@ -9,7 +9,7 @@ describe('The Default Route (Feature)', () => {
 
     // Act
     const element = browser.getTitle()
-    const text = 'Residents of London or Currently Nearby'
+    const text = 'Residents and Nearby'
 
     // Assert
     expect(element).to.equal(text)
@@ -18,16 +18,16 @@ describe('The Default Route (Feature)', () => {
   it('expects the page to have the correct heading', () => {
     // Act
     const element = $('h1').getText()
-    const text = 'Residents of London or Currently Nearby'
+    const text = 'Residents and Nearby'
 
     // Assert
     expect(element).to.equal(text)
   })
 
-  it('expects the page to have the correct subheading', () => {
+  it('expects the page to have the correct description paragraph', () => {
     // Act
-    const element = $('h2').getText()
-    const text = 'This is an application to display users who are living in London, and users who are currently within 50 miles of London.'
+    const element = $('#description').getText()
+    const text = 'This is an application to display users who live in, or who are currently within distance of a city.'
 
     // Assert
     expect(element).to.equal(text)
