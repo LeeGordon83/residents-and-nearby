@@ -91,6 +91,8 @@ In another window:
 $ npm run wdio
 ```
 
+**Note:** If the environmental variable `PORT` was set in the first window, it will also need to be set in the second.
+
 Test results:
 
 ![test-results](images/test-results-b.png)
