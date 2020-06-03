@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Residents and Nearby</title>
-  <link rel="stylesheet" type="text/css" href="/main.css">
-</head>
-<body>
-  <header>
-    <div id="header-container">
-      <h1>Residents<span> and </span>Nearby</h1>
-      <p id="description">This is an application to display users who live in, or who are currently within distance of a city.</p>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residents and Nearby</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+  </head>
+  <body>
+    <header>
+      <div id="header-container">
+        <h1>Residents<span> and </span>Nearby</h1>
+        <p id="description">This is an application to display users who live in, or who are currently within distance of a city.</p>
 
-      <div id="options-container">
-        <div id="variables">
-          <p><span>City: </span>London</p>
-          <p><span>Distance: </span>50 miles</p>
-        </div>
-  
-        <div id="sort">
-          <%- include('_sort') %>
+        <div id="options-container">
+          <div id="variables">
+            <p><span>City: </span>London</p>
+            <p><span>Distance: </span>50 miles</p>
+          </div>
+    
+          <div id="sort">
+            <%- include('_sort') %>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div id="card-container">
-    <div id="residents">
-      <%- include('_cards', { cards: residents }) %>
+    <div id="card-container">
+      <div id="residents">
+      <%- include('_cards', { cards: residents, type: 'resident' }) %>
+      </div>
+    
+      <div id="nearby">
+      <%- include('_cards', { cards: nearby, type: 'nearby' }) %>
+      </div>
     </div>
-  
-    <div id="nearby">
-      <%- include('_cards', { cards: nearby }) %>
-    </div>
-  </div>
 
-</body>
+  </body>
 </html>

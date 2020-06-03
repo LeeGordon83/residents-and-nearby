@@ -1,15 +1,14 @@
 const expect = require('chai').expect
-const mock = require('fetch-mock')
 
 const Residents = require('../../../server/lib/residents')
-const { data, schema } = require('../../support')
 const { city, url } = require('../../../server/config')
+const { cityData, schema } = require('../../support')
 
-describe('Residents', () => {
+describe('Residents', async () => {
   // Arrange
   const residents = new Residents()
 
-  describe('.get (Integration)', () => {
+  describe('.get (Integration)', async () => {
     it('expects an array of objects with the correct keys to be returned', async () => {
       // Act
       const result = await residents.get(city)
@@ -34,35 +33,60 @@ describe('Residents', () => {
     })
   })
 
-  describe('.get (Unit)', () => {
-    it('expects an array of objects to be returned', async () => {
+  describe('.get (Unit)', async () => {
+    context('NODE_ENV set to \'test\'', async () => {
       // Arrange
-      mock.get(`${url}/city/${city}/users`, data())
+      beforeEach(async () => {
+        process.env.NODE_ENV = 'test'
+      })
 
-      // Act
-      const result = await residents.get(city)
+      afterEach(async () => {
+        delete process.env.NODE_ENV
+      })
 
-      // Assert
-      expect(result.length).is.equal(2)
-      expect(result[0].first_name).is.equal('Rick')
-      expect(result[1].first_name).is.equal('Morty')
+      it('expects an array of objects to be returned', async () => {
+        // Act
+        const result = await residents.get(city)
 
-      mock.reset()
+        // Assert
+        expect(result.length).is.equal(4)
+        expect(result[1].first_name).is.equal('Adam')
+        expect(result[2].first_name).is.equal('Ben')
+      })
     })
 
-    it('expects a bad response to be handled', async () => {
-      // Arrange
-      mock.get(`${url}/city/${city}/users`, 404)
+    context('API response mocked', async () => {
+      const mock = require('fetch-mock')
 
-      try {
+      it('expects an array of objects to be returned', async () => {
+        // Arrange
+        mock.get(`${url}/city/${city}/users`, cityData())
+
         // Act
-        await residents.get(city)
-      } catch (error) {
-        // Assert
-        expect(error.message).to.equal('Bad response from server')
-      }
+        const result = await residents.get(city)
 
-      mock.reset()
+        // Assert
+        expect(result.length).is.equal(4)
+        expect(result[1].first_name).is.equal('Adam')
+        expect(result[2].first_name).is.equal('Ben')
+
+        mock.reset()
+      })
+
+      it('expects a bad response to be handled', async () => {
+        // Arrange
+        mock.get(`${url}/city/${city}/users`, 404)
+
+        try {
+          // Act
+          await residents.get(city)
+        } catch (error) {
+          // Assert
+          expect(error.message).to.equal('Bad response from server')
+        }
+
+        mock.reset()
+      })
     })
   })
 })

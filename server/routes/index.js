@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
 
     info('Success', 'nearby.get called successfully')
   } catch (err) {
-    _nearby.error = 'Unable to get results.'
+    _nearby.error = 'Unable to get nearby'
 
     warning('Error', `the following error was thrown: ${err}`)
   }
@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
 
     info('Success', 'residents.get called successfully')
   } catch (err) {
-    _residents.error = 'Unable to get results.'
+    _residents.error = 'Unable to get residents'
 
     warning('Error', `the following error was thrown: ${err}`)
   }

@@ -3,11 +3,15 @@ const compare = require('./compare')
 module.exports = (nearby, residents, sort) => {
   switch (sort) {
     case 'first-name':
+      nearby.data.sort(compare('last_name'))
       nearby.data.sort(compare('first_name'))
+      residents.data.sort(compare('last_name'))
       residents.data.sort(compare('first_name'))
       break
     case 'last-name':
+      nearby.data.sort(compare('first_name'))
       nearby.data.sort(compare('last_name'))
+      residents.data.sort(compare('first_name'))
       residents.data.sort(compare('last_name'))
       break
     case 'distance-ascending':
