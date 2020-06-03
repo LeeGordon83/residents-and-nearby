@@ -1,0 +1,10 @@
+<form action="/" method="GET">
+  <select name="sort">
+    <option value=""<% if (!sort) { %>disabled selected<% } %>><% if (sort) { %>Clear<% } %></option>
+    <option value="first-name"<% if (sort === 'first-name') { %> selected<% } %>>A-Z (First Name)</option>
+    <option value="last-name"<% if (sort === 'last-name') { %> selected<% } %>>A-Z (Last Name)</option>
+    <option value="distance-ascending"<% if (sort === 'distance-ascending') { %> selected<% } %>>Distance (Ascending)</option>
+    <option value="distance-descending"<% if (sort === 'distance-descending') { %> selected<% } %>>Distance (Descending)</option>
+  </select>
+  <button>Sort</button>
+</form>

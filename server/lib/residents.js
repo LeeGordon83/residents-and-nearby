@@ -1,5 +1,6 @@
 require('isomorphic-fetch')
 
+const { cityData } = require('../../test/support')
 const { url } = require('../config')
 
 class Residents {
@@ -8,7 +9,9 @@ class Residents {
   }
 
   async get (city) {
-    return fetch(`${this.url}/city/${city}/users`)
+    const test = process.env.NODE_ENV === 'test'
+
+    return test ? cityData() : fetch(`${this.url}/city/${city}/users`)
       .then(res => {
         if (!res.ok) throw new Error('Bad response from server')
         return res.json()

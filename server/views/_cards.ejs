@@ -1,26 +1,66 @@
 <% if (cards.error) { %>
-  <div class="card"><%= cards.error %></div>
+  <div class="card">
+    <h3 class="name"><%= cards.error %></h3>
+
+    <p class="email">
+      <span>-</span>
+    </p>
+
+  <% if (type === 'nearby') { %>
+    <p class="nearby">
+      <span>-</span>
+    </p>
+  <% } else { %>
+    <p class="resident">
+      <span>-</span>
+    </p>
+  <% } %>
+  </div>
 <% } else { %>
-  <% cards.data.forEach(card => { %>
+  <% if (cards.data.length) { %>
+    <% cards.data.forEach(card => { %>
+      <div class="card">
+        <h3 class="name"><%= card.first_name + ' ' + card.last_name %></h3>
+
+        <p class="email">
+          <span>Email: </span>
+          <a href="mailto:<%= card.email%>"><%= card.email %></a>
+        </p>
+
+      <% if (type === 'nearby') { %>
+        <p class="nearby">
+          <span>Distance: </span>
+          <%= card.distance %> miles
+        </p>
+      <% } else { %>
+        <p class="resident">
+          <span>Status: </span>
+          Resident
+        </p>
+      <% } %>
+      </div>
+    <% }) %>
+  <% } else { %>
     <div class="card">
-      <h3 class="name"><%= card.first_name + ' ' + card.last_name %></h3>
+    <% if (type === 'nearby') { %>
+      <h3 class="name">0 nearby</h3>
+    <% } else { %>
+      <h3 class="name">0 residents</h3>
+    <% } %>
 
       <p class="email">
-        <span>Email: </span>
-        <a href="mailto:<%= card.email%>"><%= card.email %></a>
+        <span>-</span>
       </p>
 
-    <% if (card.distance) { %>
+    <% if (type === 'nearby') { %>
       <p class="nearby">
-        <span>Distance: </span>
-        <%= card.distance %> miles
+        <span>-</span>
       </p>
     <% } else { %>
       <p class="resident">
-        <span>Status: </span>
-        Resident
+        <span>-</span>
       </p>
     <% } %>
     </div>
-  <% }) %>
+  <% } %>
 <% } %>
